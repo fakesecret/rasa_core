@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import logging
 
 from examples.concerts.policy import ConcertPolicy
@@ -13,11 +14,12 @@ from rasa_core.policies.memoization import MemoizationPolicy
 
 logger = logging.getLogger(__name__)
 
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
 
 def run_concertbot_online(input_channel, interpreter):
-    training_data_file = 'examples/concerts/data/stories.md'
+    training_data_file = os.path.join(DIR_PATH,'data/stories.md')
 
-    agent = Agent("examples/concerts/concert_domain.yml",
+    agent = Agent(os.path.join(DIR_PATH,'concert_domain.yml'),
                   policies=[MemoizationPolicy(), ConcertPolicy()],
                   interpreter=interpreter)
 

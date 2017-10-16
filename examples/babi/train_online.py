@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import logging
 
 from examples.babi.run import nlu_model_path
@@ -13,12 +14,12 @@ from rasa_core.interpreter import RegexInterpreter, RasaNLUInterpreter
 from rasa_core.policies.memoization import MemoizationPolicy
 
 logger = logging.getLogger(__name__)
-
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
 
 def run_babi_online(max_messages=10):
-    training_data = 'examples/babi/data/babi_task5_dev_rasa_even_smaller.md'
+    training_data = os.path.join(DIR_PATH, 'data/babi_task5_dev_rasa_even_smaller.md')
     logger.info("Starting to train policy")
-    agent = Agent("examples/restaurant_domain.yml",
+    agent = Agent(os.path.join(DIR_PATH, 'restaurant_domain.yml'),
                   policies=[MemoizationPolicy(), RestaurantPolicy()],
                   interpreter=RegexInterpreter())
 

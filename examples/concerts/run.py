@@ -3,15 +3,17 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import logging
 
 from rasa_core.agent import Agent
 from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.interpreter import RegexInterpreter
 
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
 
 def run_concerts(serve_forever=True):
-    agent = Agent.load("examples/concerts/models/policy/init",
+    agent = Agent.load(os.path.join(DIR_PATH,'models/policy/init'),
                        interpreter=RegexInterpreter())
 
     if serve_forever:

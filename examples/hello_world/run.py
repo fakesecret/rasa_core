@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import logging
 
 import numpy as np
@@ -17,7 +18,7 @@ from rasa_core.policies import Policy
 from rasa_core.tracker_store import InMemoryTrackerStore
 
 logger = logging.getLogger(__name__)
-
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
 
 class SimplePolicy(Policy):
     def predict_action_probabilities(self, tracker, domain):
@@ -46,7 +47,7 @@ class HelloInterpreter(NaturalLanguageInterpreter):
 
 
 def run_hello_world(serve_forever=True):
-    default_domain = TemplateDomain.load("examples/default_domain.yml")
+    default_domain = TemplateDomain.load(os.path.join(DIR_PATH,"default_domain.yml"))
     agent = Agent(default_domain,
                   policies=[SimplePolicy()],
                   interpreter=HelloInterpreter(),

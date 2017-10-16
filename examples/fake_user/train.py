@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 import logging
 import sys
+import os
 
 from examples.fake_user.fake_user import FakeUserInputChannel
 from rasa_core.agent import Agent
@@ -13,14 +14,14 @@ from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 
 logger = logging.getLogger(__name__)
-
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
 
 def run_fake_user(max_training_samples=10, serve_forever=True):
-    training_data = 'examples/babi/data/babi_task5_fu_rasa_fewer_actions.md'
+    training_data = os.path.join(DIR_PATH,'data/babi_task5_fu_rasa_fewer_actions.md')
 
     logger.info("Starting to train policy")
 
-    agent = Agent("examples/restaurant_domain.yml",
+    agent = Agent(os.path.join(DIR_PATH, "restaurant_domain.yml"),
                   policies=[MemoizationPolicy(), KerasPolicy()],
                   interpreter=RegexInterpreter())
 

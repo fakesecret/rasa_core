@@ -3,19 +3,22 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import logging
 
 from examples.concerts.policy import ConcertPolicy
 from rasa_core.agent import Agent
 from rasa_core.policies.memoization import MemoizationPolicy
 
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+
 if __name__ == '__main__':
     logging.basicConfig(level="INFO")
 
-    training_data_file = 'examples/concerts/data/stories.md'
-    model_path = 'examples/concerts/models/policy/init'
+    training_data_file = os.path.join(DIR_PATH,'data/stories.md')
+    model_path = os.path.join(DIR_PATH,'models/policy/init')
 
-    agent = Agent("examples/concerts/concert_domain.yml",
+    agent = Agent(os.path.join(DIR_PATH,'concert_domain.yml'),
                   policies=[MemoizationPolicy(), ConcertPolicy()])
 
     agent.train(

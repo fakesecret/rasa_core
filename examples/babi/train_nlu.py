@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 import logging
 
 import six
@@ -11,6 +12,8 @@ from rasa_nlu.config import RasaNLUConfig
 from rasa_nlu.converters import load_data
 from rasa_nlu.model import Trainer
 
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+
 if six.PY2:
     model_name = 'current_py2'
 else:
@@ -18,10 +21,10 @@ else:
 
 
 def train_babi_nlu():
-    training_data = load_data('examples/babi/data/franken_data.json')
-    trainer = Trainer(RasaNLUConfig("examples/babi/data/config_nlu.json"))
+    training_data = load_data(os.path.join(DIR_PATH, 'data/franken_data.json'))
+    trainer = Trainer(RasaNLUConfig(os.path.join(DIR_PATH, 'data/config_nlu.json')))
     trainer.train(training_data)
-    model_directory = trainer.persist('examples/babi/models/nlu/',
+    model_directory = trainer.persist(os.path.join(DIR_PATH, 'models/nlu/'),
                                       fixed_model_name=model_name)
     return model_directory
 
