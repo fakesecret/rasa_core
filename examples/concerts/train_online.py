@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 import os
 import logging
 
-from examples.concerts.policy import ConcertPolicy
 from rasa_core.agent import Agent
 from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.interpreter import RegexInterpreter
@@ -15,6 +14,8 @@ from rasa_core.policies.memoization import MemoizationPolicy
 logger = logging.getLogger(__name__)
 
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+# project modules
+from policy import ConcertPolicy
 
 def run_concertbot_online(input_channel, interpreter):
     training_data_file = os.path.join(DIR_PATH,'data/stories.md')

@@ -6,11 +6,13 @@ from __future__ import unicode_literals
 import os
 import logging
 
-from examples.concerts.policy import ConcertPolicy
 from rasa_core.agent import Agent
 from rasa_core.policies.memoization import MemoizationPolicy
 
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+# sys.path.append(DIR_PATH)
+# project modules
+from policy import ConcertPolicy
 
 if __name__ == '__main__':
     logging.basicConfig(level="INFO")

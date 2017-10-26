@@ -30,7 +30,7 @@ actions:
   - utter_greet
   - utter_goodbye
   - utter_youarewelcome
-  - examples.concerts.actions.ActionSearchConcerts
-  - examples.concerts.actions.ActionSearchVenues
-  - examples.concerts.actions.ActionShowConcertReviews
-  - examples.concerts.actions.ActionShowVenueReviews
+  - actions.ActionSearchConcerts
+  - actions.ActionSearchVenues
+  - actions.ActionShowConcertReviews
+  - actions.ActionShowVenueReviews

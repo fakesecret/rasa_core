@@ -6,12 +6,13 @@ from __future__ import unicode_literals
 import os
 import logging
 
-from examples.babi.run import nlu_model_path
-from examples.restaurant_example import RestaurantPolicy
 from rasa_core.agent import Agent
 from rasa_core.channels.file import FileInputChannel
 from rasa_core.interpreter import RegexInterpreter, RasaNLUInterpreter
 from rasa_core.policies.memoization import MemoizationPolicy
+
+from run import nlu_model_path
+from restaurant_example import RestaurantPolicy
 
 logger = logging.getLogger(__name__)
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))

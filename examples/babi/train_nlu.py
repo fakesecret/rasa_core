@@ -25,7 +25,7 @@ def train_babi_nlu():
     trainer = Trainer(RasaNLUConfig(os.path.join(DIR_PATH, 'data/config_nlu.json')))
     trainer.train(training_data)
     model_directory = trainer.persist(os.path.join(DIR_PATH, 'models/nlu/'),
-                                      fixed_model_name=model_name)
+                                      fixed_model_name=model_name) # nlu 0.10.0 is model_name
     return model_directory
 
 

@@ -6,11 +6,13 @@ from __future__ import unicode_literals
 import os
 import logging
 
-from examples.restaurant_example import RestaurantPolicy
+
 from rasa_core.agent import Agent
 from rasa_core.policies.memoization import MemoizationPolicy
 
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+
+from restaurant_example import RestaurantPolicy
 
 def train_babi_dm():
     training_data_file = os.path.join(DIR_PATH, 'data/babi_task5_trn_rasa_with_slots.md')
