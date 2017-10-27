@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import sys
 import os
 import logging
 
@@ -10,9 +11,9 @@ from rasa_core.agent import Agent
 from rasa_core.policies.memoization import MemoizationPolicy
 
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
-# sys.path.append(DIR_PATH)
-# project modules
-from policy import ConcertPolicy
+sys.path.append(os.path.dirname(DIR_PATH))
+
+from concerts.policy import ConcertPolicy
 
 if __name__ == '__main__':
     logging.basicConfig(level="INFO")

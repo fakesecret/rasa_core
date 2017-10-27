@@ -3,6 +3,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import sys
 import os
 import logging
 
@@ -13,6 +14,7 @@ from rasa_core.channels.console import ConsoleInputChannel
 from rasa_core.interpreter import RasaNLUInterpreter
 
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(DIR_PATH))
 
 if six.PY2:
     nlu_model_path = os.path.join(DIR_PATH, 'models/nlu/current_py2')

@@ -3,6 +3,8 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import sys
+import os
 import logging
 
 import numpy as np
@@ -14,7 +16,8 @@ from rasa_core.channels.channel import InputChannel
 from rasa_core.channels.console import ConsoleOutputChannel
 
 logger = logging.getLogger(__name__)
-
+DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(DIR_PATH))
 
 class FakeUserInputChannel(InputChannel):
     """Input channel that reads the user messages from the command line."""

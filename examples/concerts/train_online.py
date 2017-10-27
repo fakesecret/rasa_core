@@ -14,8 +14,9 @@ from rasa_core.policies.memoization import MemoizationPolicy
 logger = logging.getLogger(__name__)
 
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(DIR_PATH))
 # project modules
-from policy import ConcertPolicy
+from concerts.policy import ConcertPolicy
 
 def run_concertbot_online(input_channel, interpreter):
     training_data_file = os.path.join(DIR_PATH,'data/stories.md')

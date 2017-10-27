@@ -12,11 +12,11 @@ from rasa_core.interpreter import RegexInterpreter
 from rasa_core.policies.keras_policy import KerasPolicy
 from rasa_core.policies.memoization import MemoizationPolicy
 
-# project modules
-from fake_user import FakeUserInputChannel
-
 logger = logging.getLogger(__name__)
 DIR_PATH = os.path.abspath((os.path.dirname(__file__)))
+sys.path.append(os.path.dirname(DIR_PATH))
+
+from fake_user.fake_user_classes import FakeUserInputChannel
 
 def run_fake_user(max_training_samples=10, serve_forever=True):
     training_data = os.path.join(DIR_PATH,'data/babi_task5_fu_rasa_fewer_actions.md')
